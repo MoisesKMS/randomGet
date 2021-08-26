@@ -1,2 +1,2 @@
 # randomGet
- App de recomendaciones anime
+ Sitio PMV para recomendacion de Anime
