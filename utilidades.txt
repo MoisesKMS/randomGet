@@ -1,0 +1,19 @@
+/**Limpiar HTML**/
+
+function limpiarHTML() {
+    const ELEMENTO = document.querySelector('#resumen');
+    while (ELEMENTO.firstChild) {
+        ELEMENTO.removeChild(ELEMENTO.firstChild);
+    }
+}
+
+/**Agregar un Spinner**/
+function spinner() {
+    ELEMENTO.innerHTML = `CODIGO HTML Y CSS SSPINNER`;
+    setTimeout(() => {
+        //CONTENIDO A REMPLAZAR POR EL SPINER EN EL ELEMENTO
+    }, 3000);
+}
+
+/**IDENTIFICAR POR URL**/
+if (window.location.pathname == '/' || window.location.pathname == '/index.html') funcionA_Ejecutar();
