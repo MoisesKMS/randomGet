@@ -1,0 +1,56 @@
+html {
+    /** Codigo para que el padding no sea tomado en cuenta en las medidas globales **/
+    box-sizing: border-box;
+    /** Reset para REMS - 62.5% = 10px **/
+    font-size: 62.5%;
+    /** Agregar sfecto smoth a los enlaces**/
+    scroll-behavior: smooth;
+    scroll-padding: 15rem;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: $fuenteParrafos;
+    font-size: 1.8rem;
+    line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: $funeteTitulos;
+}
+
+h1 {
+    font-size: 4.8rem;
+}
+
+h2 {
+    font-size: 3rem;
+    line-height: 1.2;
+    font-weight: $negrita;
+}
+
+h3 {
+    font-size: 2rem;
+    font-weight: $negrita;
+}
+
+h4 {
+    font-size: 2.8rem;
+    line-height: 1.5;
+}
+
+img {
+    max-width: 100%;
+}
+
+p {
+    font-family: $fuenteParrafos;
+}

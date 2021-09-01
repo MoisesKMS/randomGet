@@ -1,0 +1,31 @@
+//Fuentes Importadas
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
+
+/*Fuentes*/
+
+$fuenteParrafos: 'Roboto',
+sans-serif;
+$funeteTitulos:'Lato',
+sans-serif;
+$fuentePrincipal: 'Roboto',
+sans-serif;
+$fuenteSecundaria:'Lato',
+sans-serif;
+
+/*Colores*/
+
+$negro: #000;
+$blanco: #fff;
+
+/*Tamaño Medi Queries*/
+
+$telefono: 480px;
+$tablet: 768px;
+$escritorio: 1024px;
+
+/** Fuentes **/
+
+$delagada: 300;
+$regular: 400;
+$negrita: 700;
+$negra: 900;

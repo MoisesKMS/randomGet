@@ -1,0 +1,25 @@
+.btn {
+    //Modificar a gusto
+    border-radius: 1rem;
+    border: none;
+    font-weight: $negrita;
+    padding: 1rem 3rem;
+    text-decoration: none;
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.16);
+    -moz-box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.16);
+    -webkit-box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.16);
+    &:hover {
+        cursor: pointer;
+        transition: .5s;
+    }
+}
+
+.btn-color {
+    //agregar color a botones
+    background-color: $negro;
+    color: $blanco;
+    &:hover {
+        background-color: $blanco;
+        color: $negro;
+    }
+}
