@@ -1,0 +1,29 @@
+.buscador {
+    padding-top: 5rem;
+    display: flex;
+    justify-content: space-evenly;
+    max-height: 5rem;
+    align-items: center;
+    input {
+        width: 50rem;
+        padding: 1rem 2.5rem;
+        transition: .3s;
+        border: 1px solid $rosa;
+        border-radius: 1rem;
+        color: $rosaFuerte;
+        &:hover {
+            border: 1px solid $lila;
+            box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.05);
+        }
+        &:focus {
+            outline: none;
+            transition: .3s;
+            padding: 1rem;
+            box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+    }
+     ::placeholder {
+        color: $rosa;
+        opacity: 60%;
+    }
+}
