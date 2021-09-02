@@ -5,21 +5,40 @@
     font-weight: $negrita;
     padding: 1rem 3rem;
     text-decoration: none;
-    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.16);
-    -moz-box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.16);
-    -webkit-box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.09);
+    transition: .3s;
     &:hover {
         cursor: pointer;
-        transition: .5s;
+        transition: .3s;
     }
 }
 
-.btn-color {
+.btn-rosa {
     //agregar color a botones
-    background-color: $negro;
+    background-color: $rosa;
+    color: $blanco;
+    &:hover {
+        background-color: $rosaFuerte;
+    }
+}
+
+.btn-borrar {
+    background-color: $lila;
+    padding: 1rem 1.7rem;
     color: $blanco;
     &:hover {
         background-color: $blanco;
-        color: $negro;
+        color: $rojo;
+        padding: 1rem 2rem;
+    }
+}
+
+.btn-agregar {
+    background-color: $rosa;
+    color: $blanco;
+    padding: 1rem 1.7rem;
+    &:hover {
+        background-color: $verde;
+        padding: 1rem 3rem;
     }
 }
