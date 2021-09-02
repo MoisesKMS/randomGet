@@ -1,0 +1,98 @@
+.contenedor-secciones {
+    @include tablet {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        margin: 5rem;
+    }
+}
+
+.series-agregadas {
+    // border: 3px solid $rosa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1rem;
+    width: 90%;
+}
+
+.titulo-series-agregadas {
+    font-size: 2.5rem;
+    font-weight: $negrita;
+}
+
+.serie-agregada {
+    transition: .3s;
+    background-color: $rosa;
+    border-radius: 1rem;
+    width: 50rem;
+    img {
+        height: 9rem;
+    }
+    h2 {
+        font-size: 2.3rem;
+    }
+    display: flex;
+    grid-gap: 5rem;
+    margin-bottom: 2rem;
+    &:hover {
+        box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.1);
+        transition: .3s;
+        background-color: $rosaFuerte;
+    }
+}
+
+.contenido-serie-agregada {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    padding: 1rem;
+    color: $blanco;
+    h2 {
+        margin: 0;
+    }
+}
+
+.resultados-de-busqueda {
+    width: 110rem;
+    height: 67rem;
+    margin: 0 auto;
+    background-color: $crema;
+    border: 1px solid $rosa;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    border-radius: 1rem;
+    &::-webkit-scrollbar {
+        width: 1rem;
+    }
+    &::-webkit-scrollbar-track {
+        border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: $rosa;
+        border-radius: 10px;
+    }
+}
+
+.serie-encontrada {
+    text-align: center;
+    background-color: $blanco;
+    max-height: 40rem;
+    transition: .3s;
+    img {
+        width: 20rem;
+    }
+    padding: 0 0 2rem 0;
+    margin: 3rem;
+    border-radius: 1rem;
+    p {
+        margin: 1rem 0 1rem 0;
+        font-weight: $negrita;
+    }
+    &:hover {
+        box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.1);
+        transition: .3s;
+    }
+}
