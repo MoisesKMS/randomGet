@@ -1,14 +1,14 @@
 {
-    "name": "layout_page",
+    "name": "randomget",
     "version": "1.0.0",
-    "description": "Estructura basica para un sitio landing page",
+    "description": "Recomendaciones anime basadas en tus gustos",
     "main": "gulpfile.js",
     "scripts": {
         "gulp": "gulp"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ScarKMS/layout_page.git"
+        "url": "git+https://github.com/ScarKMS/RandomGet"
     },
     "keywords": [
         "Layout",
