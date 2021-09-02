@@ -6,14 +6,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="build/img/favicon.ico">
-    <title>NOMBRE DEL SITIO</title>
+    <link rel="shortcut icon" href="build/img/logo/Logo.png">
+    <title>RandomGet</title>
 
     <!-- Cabeceras para compartir enlaces -->
-    <meta name="description" content="DESCRIPCION DEL SITIO">
-    <meta property="og:title" content="Titulo corto del Sitio/Articulo" />
-    <meta property="og:url" content="https://www.ENLACE-DEL-SITIO.com/" />
-    <meta property="og:description" content="DESCRIPCION DEL SITIO">
+    <meta name="description" content="Recomendaciones anime basadas en tus gustos">
+    <meta property="og:title" content="RandomGet" />
+    <!-- <meta property="og:url" content="https://www.ENLACE-DEL-SITIO.com/" /> -->
+    <meta property="og:description" content="Recomendaciones anime basadas en tus gustos">
     <meta property="og:image" content="URL COMPLETA DE LA IMAGEN ESTATICA">
 
     <!-- Enlaces a estilos -->
@@ -23,11 +23,128 @@
 
 <body>
 
+    <header class="site-header">
+        <div class="barra contenedor">
+            <div class="logo">
+                <a href="/">
+                    <img src="build/img/logo/Logo.png" alt="Anime">
+                    <p>Random<span>Get</span></p>
+                </a>
+            </div>
+            <div class="menu">
+                <nav class="navbar">
+                    <a href="#">Inicio</a>
+                    <a href="#">¿Como Funciona?</a>
+                    <a href="#">Contacto</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="buscador contenedor">
+        <div class="content-buscador">
+            <input type="text" name="busqueda" id="busqueda" placeholder="Ingresa el nombre de una serie">
+            <a href="#" class="btn btn-rosa"><i class="fas fa-search"></i> Buscar </a>
+        </div>
+    </div>
 
 
+    <div class="contenedor-secciones">
+        <div class="series-agregadas">
+            <p class="titulo-series-agregadas">Series Agregadas</p>
+            <div class="serie-agregada">
+                <img src="build/img/serie/agregada/1.jpg" alt="Serie 1">
+                <div class="contenido-serie-agregada">
+                    <h2>Stella no Mahou</h2>
+                    <a href="#" class="btn btn-borrar"><i class="fas fa-trash-alt"></i></a>
+                </div>
+            </div>
 
-    <script src="https://kit.fontawesome.com/15a623a9b3.js" crossorigin="anonymous"></script>
-    <script src="build/js/bundle.min.js"></script>
+            <div class="serie-agregada">
+                <img src="build/img/serie/agregada/2.jpg" alt="Serie 2">
+                <div class="contenido-serie-agregada">
+                    <h2>Houkago Teibou Nisshi</h2>
+                    <a href="#" class="btn btn-borrar"><i class="fas fa-trash-alt"></i></a>
+                </div>
+            </div>
+
+            <div class="serie-agregada">
+                <img src="build/img/serie/agregada/3.jpg" alt="Serie 3">
+                <div class="contenido-serie-agregada">
+                    <h2>Non Non Biyori</h2>
+                    <a href="#" class="btn btn-borrar"><i class="fas fa-trash-alt"></i></a>
+                </div>
+            </div>
+
+            <div class="serie-agregada">
+                <img src="build/img/serie/agregada/4.jpg" alt="Serie 4">
+                <div class="contenido-serie-agregada">
+                    <h2>Kiniro Mosaic</h2>
+                    <a href="#" class="btn btn-borrar"><i class="fas fa-trash-alt"></i></a>
+
+                </div>
+            </div>
+
+            <div class="serie-agregada">
+                <img src="build/img/serie/agregada/5.jpg" alt="Serie 5">
+                <div class="contenido-serie-agregada">
+                    <h2>Yuru Yuri</h2>
+                    <a href="#" class="btn btn-borrar"><i class="fas fa-trash-alt"></i></a>
+                </div>
+            </div>
+
+            <a href="#" class="btn btn-rosa"><i class="fab fa-searchengin"></i> Encontrar Recomendacion</a>
+        </div>
+
+        <!-- RESULTADOS DE BUSQUEDA -->
+
+        <div class="resultados-de-busqueda">
+
+            <div class="serie-encontrada">
+                <img src="build/img/serie/agregada/5.jpg" alt="Serie 5">
+                <div class="contenido-serie-encontrada">
+                    <p>Yuru Yuri</p>
+                    <a href="#" class="btn btn-agregar"><i class="fas fa-plus-square"></i> Agregar</a>
+                </div>
+            </div>
+
+            <div class="serie-encontrada">
+                <img src="build/img/serie/agregada/4.jpg" alt="Serie 4">
+                <div class="contenido-serie-encontrada">
+                    <p>Kiniro Mosaic</p>
+                    <a href="#" class="btn btn-agregar"><i class="fas fa-plus-square"></i> Agregar</a>
+                </div>
+            </div>
+
+            <div class="serie-encontrada">
+                <img src="build/img/serie/agregada/3.jpg" alt="Serie 3">
+                <div class="contenido-serie-encontrada">
+                    <p>Non Non Biyori</p>
+                    <a href="#" class="btn btn-agregar"><i class="fas fa-plus-square"></i> Agregar</a>
+                </div>
+            </div>
+
+            <div class="serie-encontrada">
+                <img src="build/img/serie/agregada/2.jpg" alt="Serie 2">
+                <div class="contenido-serie-encontrada">
+                    <p>Houkago Teibou Nisshi</p>
+                    <a href="#" class="btn btn-agregar"><i class="fas fa-plus-square"></i> Agregar</a>
+                </div>
+            </div>
+
+            <div class="serie-encontrada">
+                <img src="build/img/serie/agregada/1.jpg" alt="Serie 1">
+                <div class="contenido-serie-encontrada">
+                    <p>Stella no Mahou</p>
+                    <a href="#" class="btn btn-agregar"><i class="fas fa-plus-square"></i> Agregar</a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src="build/js/bundle.min.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
