@@ -4,12 +4,18 @@ let listaSeries = document.querySelector('#resultados');
 function buscarSerie() {
     let textoCampo = document.querySelector('#busqueda').value;
     // console.log(textoCampo);
-    limpiarHTML('resultados');
-
+    listaSeries.innerHTML = `
+            <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+            </div>
+            `;
 
     fetch(baseUrl + textoCampo)
         .then(response => response.json())
         .then(data => {
+            limpiarHTML('resultados');
             let listaAnimes = data.data;
             listaAnimes.forEach(serie => {
                 const serieEncontrada = document.createElement('DIV')
@@ -23,7 +29,10 @@ function buscarSerie() {
                 contenidoSerieEncontrada.classList.add('contenido-serie-encontrada')
 
                 const textoTitulo = document.createElement('P')
-                textoTitulo.textContent = serie.attributes.titles.en_jp
+                textoTitulo.textContent = serie.attributes.titles.en_jp.substr(0, 50)
+                if (serie.attributes.titles.en_jp.length > 50) {
+                    textoTitulo.textContent = textoTitulo.textContent + '...'
+                }
 
                 const btnAgregar = document.createElement('A')
                 btnAgregar.setAttribute('href', '#')

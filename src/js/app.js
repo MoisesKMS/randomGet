@@ -15,9 +15,10 @@ function eventListeners() {
 
 
 
+
 function limpiarHTML(item) {
-    const ELEMENTO = document.querySelector('#' + item);
-    while (ELEMENTO.firstChild) {
-        ELEMENTO.removeChild(ELEMENTO.firstChild);
+    const elemento = document.querySelector('#' + item);
+    while (elemento.firstChild) {
+        elemento.removeChild(elemento.firstChild);
     }
 }

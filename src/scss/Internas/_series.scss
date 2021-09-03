@@ -64,6 +64,10 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     border-radius: 1rem;
+    .texto-busqueda-serie {
+        color: $rosa;
+        margin: 5rem auto;
+    }
     &::-webkit-scrollbar {
         width: 1rem;
     }
