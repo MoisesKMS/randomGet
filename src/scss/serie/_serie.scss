@@ -1,0 +1,118 @@
+.c-serie {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1.5fr;
+    column-gap: 5rem;
+    max-width: 150rem;
+    margin: 0 auto;
+}
+
+.c-image {
+    position: relative;
+    .imagen {
+        position: absolute;
+        top: -5rem;
+        border: 5px solid $blanco;
+        height: 35.5rem;
+        overflow-y: hidden;
+        box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.05);
+    }
+}
+
+.c-tabs {
+    background-color: $blanco;
+    padding: 3rem;
+    margin-top: 3rem;
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.05);
+    transition: .3s;
+    h2 {
+        margin: 0;
+    }
+    &:hover {
+        box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.1);
+        transition: .3s;
+    }
+}
+
+.c-generos {
+    background-color: $blanco;
+    padding: 3rem;
+    margin-top: 3rem;
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.05);
+    transition: .3s;
+    p {
+        font-size: 2rem;
+        font-weight: $negrita;
+    }
+    a {
+        background-color: $rosa;
+        padding: 0.2rem 1rem;
+        display: inline-block;
+        margin-bottom: 1rem;
+        border-radius: 1rem;
+        color: $blanco;
+        transition: .3s;
+        text-decoration: none;
+        box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.05);
+        &:hover {
+            transition: .3s;
+            font-weight: $negrita;
+            background-color: $rosaFuerte;
+            box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.15);
+            padding: 0.2rem 2rem;
+        }
+    }
+    &:hover {
+        box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.1);
+        transition: .3s;
+    }
+}
+
+.aside-detalles {
+    p {
+        margin: 0;
+        line-height: 1.8;
+        font-weight: $negrita;
+        span {
+            font-weight: $regular;
+        }
+    }
+}
+
+.c-ficha {
+    background-color: $blanco;
+    padding: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.1);
+    transition: .3s;
+    &:hover {
+        box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.15);
+        transition: .3s;
+    }
+    h2 {
+        margin: 2rem 0;
+        font-size: 2.5rem;
+    }
+}
+
+.aside-c-persoanjes {
+    display: flex;
+    justify-content: space-between;
+    .miniatura {
+        background-color: $lila;
+        overflow-y: hidden;
+        height: 12.3rem;
+        transition: .3s;
+        &:hover {
+            transition: .3s;
+            height: 12.7rem;
+            background-color: $rosaFuerte;
+            cursor: pointer;
+            box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+    }
+    img {
+        width: 8rem;
+        border: 2px solid $rosa;
+    }
+}
