@@ -1,7 +1,42 @@
 const baseUrl = 'https://kitsu.io/api/edge/anime?filter[text]=';
 let listaSeries = document.querySelector('#resultados');
 
-function buscarSerie() {
+function agregarSerie(id, nombre, urlImagen) {
+
+    const contenedorSerieAgregada = document.createElement('DIV');
+    contenedorSerieAgregada.classList.add('serie-agregada');
+    contenedorSerieAgregada.dataset.serieId = id
+
+    const imagenSerie = document.createElement('IMG')
+    imagenSerie.src = urlImagen
+    imagenSerie.setAttribute('alt', nombre)
+
+    const contenidoSerieAgregada = document.createElement('DIV')
+    contenidoSerieAgregada.classList.add('contenido-serie-agregada')
+
+    const tituloSerie = document.createElement('H2')
+    tituloSerie.textContent = nombre
+
+    const btnBorrar = document.createElement('A')
+    btnBorrar.setAttribute('href', '#')
+    btnBorrar.classList.add('btn')
+    btnBorrar.classList.add('btn-borrar')
+
+    const iconoBorrar = document.createElement('I')
+    iconoBorrar.classList.add('fas')
+    iconoBorrar.classList.add('fa-trash-alt')
+
+    btnBorrar.appendChild(iconoBorrar)
+    contenidoSerieAgregada.appendChild(tituloSerie)
+    contenidoSerieAgregada.appendChild(btnBorrar)
+
+    contenedorSerieAgregada.appendChild(imagenSerie)
+    contenedorSerieAgregada.appendChild(contenidoSerieAgregada)
+
+    listaSeriesAgregadas.appendChild(contenidoSerieAgregada)
+}
+
+async function buscarSerie() {
     let textoCampo = document.querySelector('#busqueda').value;
     // console.log(textoCampo);
     listaSeries.innerHTML = `
@@ -12,7 +47,7 @@ function buscarSerie() {
             </div>
             `;
 
-    fetch(baseUrl + textoCampo)
+    await fetch(baseUrl + textoCampo)
         .then(response => response.json())
         .then(data => {
             limpiarHTML('resultados');
@@ -40,6 +75,7 @@ function buscarSerie() {
                 btnAgregar.classList.add('btn-agregar')
 
                 const iconoBtnAgregar = document.createElement('I')
+                iconoBtnAgregar.addEventListener('click', agregarSerie)
                 iconoBtnAgregar.classList.add('fas')
                 iconoBtnAgregar.classList.add('fa-plus-square')
 
