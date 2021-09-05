@@ -44,7 +44,8 @@
     <div class="buscador contenedor">
         <div class="content-buscador">
             <input type="text" name="busqueda" id="busqueda" placeholder="Ingresa el nombre de una serie">
-            <a href="#" class="btn btn-rosa" id="buscar"><i class="fas fa-search"></i> Buscar </a>
+            <button type="button" class="btn btn-rosa" id="buscar" onclick="buscar()"><i class="fas fa-search"></i> Buscar </button>
+            <!-- <a href="#" class="btn btn-rosa" id="buscar"><i class="fas fa-search"></i> Buscar </a> -->
         </div>
     </div>
 
@@ -55,7 +56,8 @@
 
             <div class="contenedor-series-agregadas" id="series-agregadas">
 
-                <div class="serie-agregada" data-anime-id="1">
+
+                <!-- <div class="serie-agregada" data-anime-id="1">
                     <img src="build/img/serie/agregada/1.jpg" alt="Serie 1">
                     <div class="contenido-serie-agregada">
                         <h2>Stella no Mahou</h2>
@@ -94,10 +96,11 @@
                         <h2>Yuru Yuri</h2>
                         <a href="#" class="btn btn-borrar"><i class="fas fa-trash-alt"></i></a>
                     </div>
-                </div>
+                </div> -->
             </div>
 
-            <a href="#" class="btn btn-rosa"><i class="fab fa-searchengin"></i> Encontrar Recomendacion</a>
+            <button type="button" class="btn btn-rosa" id="btnBuscarRecomendacion"><i class="fab fa-searchengin"></i> Encontrar Recomendacion</button>
+            <!-- <a href="#" class="btn btn-rosa"><i class="fab fa-searchengin"></i> Encontrar Recomendacion</a> -->
         </div>
 
         <!-- RESULTADOS DE BUSQUEDA -->
@@ -110,7 +113,7 @@
                 <img src="build/img/serie/agregada/5.jpg" alt="Serie 5">
                 <div class="contenido-serie-encontrada">
                     <p>Yuru Yuri</p>
-                    <a href="#" class="btn btn-agregar"><i class="fas fa-plus-square"></i> Agregar</a>
+                    <button class="btn btn-agregar" type="button" onclick="alert('Hello world!')"><i class="fas fa-plus-square"></i> Agregar</button>
                 </div>
             </div>
 
