@@ -2,9 +2,9 @@ document.addEventListener('DOMContentLoaded', eventListeners);
 
 function eventListeners() {
     const btnBuscar = document.querySelector('#buscar');
-    btnBuscar.addEventListener('click', buscarSerie)
+    btnBuscar.addEventListener('click', buscar)
 
-    const listaSeriesAgregadas = document.querySelector('#series-agregadas');
+    // const listaSeriesAgregadas = document.querySelector('#series-agregadas');
 
     const inputBuscar = document.querySelector('#busqueda');
     inputBuscar.addEventListener('keyup', function(event) {
@@ -13,24 +13,31 @@ function eventListeners() {
             btnBuscar.click();
         }
     });
+
+    const btnBuscarRecomendacion = document.querySelector('#btnBuscarRecomendacion');
+    btnBuscarRecomendacion.addEventListener('click', encontrarRecomendacion)
 }
 
-//Objeto con la informacion de la serie
-const serieObj = {
-    titulo: '',
-    imagen: '',
-    id: '',
-    generos: ''
+function encontrarRecomendacion() {
+
 }
 
-function remoberSerie(e) {
-    // document.querySelector(`[data-paso="${idSERIE}"]`);
-}
+// //Objeto con la informacion de la serie
+// const serieObj = {
+//     titulo: '',
+//     imagen: '',
+//     id: '',
+//     generos: ''
+// }
+
+// function remoberSerie(e) {
+//     // document.querySelector(`[data-paso="${idSERIE}"]`);
+// }
 
 
-function limpiarHTML(item) {
-    const elemento = document.querySelector('#' + item);
-    while (elemento.firstChild) {
-        elemento.removeChild(elemento.firstChild);
-    }
-}
+// function limpiarHTML(item) {
+//     const elemento = document.querySelector('#' + item);
+//     while (elemento.firstChild) {
+//         elemento.removeChild(elemento.firstChild);
+//     }
+// }
