@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', eventListeners);
+const btnBuscarRecomendacion = document.querySelector('#btnBuscarRecomendacion');
 
 function eventListeners() {
     const btnBuscar = document.querySelector('#buscar');
@@ -14,30 +15,46 @@ function eventListeners() {
         }
     });
 
-    const btnBuscarRecomendacion = document.querySelector('#btnBuscarRecomendacion');
     btnBuscarRecomendacion.addEventListener('click', encontrarRecomendacion)
 }
 
 function encontrarRecomendacion() {
+    const contenedor = document.querySelector('#series-agregadas').children
+    let listaId = []
+    if (contenedor.length == 5) {
+        listaId = []
+        for (let i = 0; i < 5; i++) {
+            listaId.push(contenedor[i].id.substr(6, contenedor[i].length))
+        }
+        encontrarGeneros(listaId)
+    } else {
+        listaId = []
+        console.log('Neceitas 5 series para poder darte una recomendacion');
+    }
+}
+
+
+function encontrarGeneros(id) {
+    let listaGeneros = id
+    for (let i = 0; i < listaGeneros.length; i++) {
+        generosAPI('https://kitsu.io/api/edge/anime/' + listaGeneros[i] + '/genres')
+    }
 
 }
 
-// //Objeto con la informacion de la serie
-// const serieObj = {
-//     titulo: '',
-//     imagen: '',
-//     id: '',
-//     generos: ''
-// }
+async function generosAPI(id) {
+    let listaGenerosF = []
+    await fetch(id)
+        .then(response => response.json())
+        .then(data => {
+            const listaGeneros = data.data;
 
-// function remoberSerie(e) {
-//     // document.querySelector(`[data-paso="${idSERIE}"]`);
-// }
+            listaGeneros.forEach(genero => {
+                // console.log(genero.attributes.slug);
+                listaGenerosF.push(genero.attributes.slug)
+            });
 
-
-// function limpiarHTML(item) {
-//     const elemento = document.querySelector('#' + item);
-//     while (elemento.firstChild) {
-//         elemento.removeChild(elemento.firstChild);
-//     }
-// }
+            console.log(listaGenerosF);
+        })
+        .catch(err => console.log(err));
+}
