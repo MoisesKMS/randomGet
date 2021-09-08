@@ -34,27 +34,20 @@ function encontrarRecomendacion() {
 }
 
 
-function encontrarGeneros(id) {
-    let listaGeneros = id
-    for (let i = 0; i < listaGeneros.length; i++) {
-        generosAPI('https://kitsu.io/api/edge/anime/' + listaGeneros[i] + '/genres')
+function encontrarGeneros(listaSeries) {
+
+    let listaGeneros = []
+    let contador = 0
+    while (contador < 5) {
+        fetch('https://kitsu.io/api/edge/anime/' + listaSeries[0] + '/genres')
+            .then(res => res.json())
+            .then(datos => {
+                const listaObtenida = datos.data;
+                listaObtenida.forEach(genero => {
+                    listaGeneros.push(genero.attributes.slug)
+                })
+            })
+        contador++;
     }
-
-}
-
-async function generosAPI(id) {
-    let listaGenerosF = []
-    await fetch(id)
-        .then(response => response.json())
-        .then(data => {
-            const listaGeneros = data.data;
-
-            listaGeneros.forEach(genero => {
-                // console.log(genero.attributes.slug);
-                listaGenerosF.push(genero.attributes.slug)
-            });
-
-            console.log(listaGenerosF);
-        })
-        .catch(err => console.log(err));
+    console.log(listaGeneros);
 }

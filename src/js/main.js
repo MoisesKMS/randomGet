@@ -66,7 +66,7 @@ async function buscar() {
 
                 contenedorResultados.appendChild(serieEncontrada)
 
-                console.log(serie.relationships.genres.links.related);
+                // console.log(serie.relationships.genres.links.related);
                 // console.log(listaSeries)
                 // console.log(Number(serie.id))
                 // console.log(serie.attributes.titles.en_jp)
