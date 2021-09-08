@@ -234,16 +234,7 @@ function mostrarSerieRecomendada(id) {
                     </div>
                     <div class="c-generos">
                         <p>Géneros</p>
-                        <a href="#">Asia</a>
-                        <a href="#">comedia</a>
-                        <a href="#">planeta Tierra</a>
-                        <a href="#">escuela secundaria</a>
-                        <a href="#">Japón</a>
-                        <a href="#">presente</a>
-                        <a href="#">clubs escolares</a>
-                        <a href="#">vida escolar</a>
-                        <a href="#">vida diaria</a>
-                        <a href="#">las artes</a>
+                        
                     </div>
                 </div>
     
