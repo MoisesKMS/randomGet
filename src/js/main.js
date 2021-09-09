@@ -6,7 +6,14 @@ const contenedorResultados = document.querySelector('#resultados');
 
 let listaAnimesAgregados = [];
 
-async function buscar() {
+function limpiarHTML(id) {
+    const elemento = document.querySelector('#' + id);
+    while (elemento.firstChild) {
+        elemento.removeChild(elemento.firstChild);
+    }
+}
+
+function buscar() {
     const textoBuscar = document.querySelector('#busqueda').value;
     // console.log(textoCampo);
     contenedorResultados.innerHTML = `
@@ -16,12 +23,11 @@ async function buscar() {
             <div class="bounce3"></div>
             </div>
             `;
-    await fetch(baseUrl + textoBuscar)
+    fetch(baseUrl + textoBuscar)
         .then(response => response.json())
         .then(data => {
-            limpiarHTML('resultados');
-
             const listaAnimes = data.data;
+            limpiarHTML('resultados');
 
             listaAnimes.forEach(serie => {
 
@@ -29,16 +35,26 @@ async function buscar() {
                 serieEncontrada.classList.add('serie-encontrada')
 
                 const imagenSerie = document.createElement('IMG')
-                imagenSerie.src = serie.attributes.posterImage.original
-                imagenSerie.setAttribute('alt', serie.attributes.titles.en_jp)
+                if (serie.attributes.posterImage.original != null & serie.attributes.posterImage.original != undefined) {
+                    imagenSerie.src = serie.attributes.posterImage.original
+                    imagenSerie.setAttribute('alt', serie.attributes.titles.en_jp)
+                }
 
                 const contenidoSerieEncontrada = document.createElement('DIV')
                 contenidoSerieEncontrada.classList.add('contenido-serie-encontrada')
 
-                const textoTitulo = document.createElement('P')
-                textoTitulo.textContent = serie.attributes.titles.en_jp.substr(0, 50)
-                if (serie.attributes.titles.en_jp.length > 50) {
-                    textoTitulo.textContent = textoTitulo.textContent + '...'
+                let textoTitulo = document.createElement('P')
+                let nombreSerie = ''
+                try {
+                    if (serie.attributes.titles.en_jp != null & serie.attributes.titles.en_jp != undefined) {
+                        nombreSerie = serie.attributes.titles.en_jp;
+                        textoTitulo.textContent = nombreSerie
+                            // if (nombreSerie.length > 40) {
+                            //     textoTitulo.textContent = nombreSerie.substr(0, 39) + '...'
+                            // }
+                    }
+                } catch (error) {
+                    console.log(error);
                 }
 
                 const btnAgregar = document.createElement('button')
@@ -102,6 +118,7 @@ function addSerie(e) {
         }
     } else {
         console.log('maximo alcanzado');
+        alert('maximo de series alcanzado, presiona Encontrar recomendacion')
     }
 
 
@@ -128,7 +145,7 @@ function agregarSerie(id, nombre, img) {
     const btnEliminar = document.createElement('BUTTON');
     btnEliminar.classList.add('btn', 'btn-borrar')
     btnEliminar.setAttribute('type', 'button')
-    btnEliminar.onclick = removeSerie
+        // btnEliminar.onclick = removeSerie
 
     const icono = document.createElement('I')
     icono.classList.add('fas', 'fa-trash-alt')
@@ -144,18 +161,18 @@ function agregarSerie(id, nombre, img) {
     contenedorSeries.appendChild(contenedorSerie);
 }
 
-function removeSerie(e) {
-    let tipo = e.path
-    const contenedor = document.querySelector('#series-agregadas')
-        // console.log(tipo[3].id.includes('serie-'));
-    if (tipo[3].id.includes('serie-')) {
-        contenedor.removeChild(tipo[3])
-            // console.log(tipo[3].id);
-    } else {
-        contenedor.removeChild(tipo[2])
-            // console.log(tipo[2].id);
-    }
-}
+// function removeSerie(e) {
+//     let tipo = e.path
+//     const contenedor = document.querySelector('#series-agregadas')
+//         // console.log(tipo[3].id.includes('serie-'));
+//     if (tipo[3].id.includes('serie-')) {
+//         contenedor.removeChild(tipo[3])
+//             // console.log(tipo[3].id);
+//     } else {
+//         contenedor.removeChild(tipo[2])
+//             // console.log(tipo[2].id);
+//     }
+// }
 
 
 
@@ -163,10 +180,3 @@ function removeSerie(e) {
 /* * 
  * Utilidades
  */
-
-function limpiarHTML(etiqueta) {
-    const elemento = document.querySelector('#' + etiqueta);
-    while (elemento.firstChild) {
-        elemento.removeChild(elemento.firstChild);
-    }
-}
