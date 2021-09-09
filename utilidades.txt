@@ -17,3 +17,13 @@ function spinner() {
 
 /**IDENTIFICAR POR URL**/
 if (window.location.pathname == '/' || window.location.pathname == '/index.html') funcionA_Ejecutar();
+
+/** Filtrar por valor unico**/
+function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+}
+
+function filtrarGeneros(lista) {
+    console.log(lista);
+    let nuevaLista = lista.filter(onlyUnique);
+    console.log(nuevaLista
