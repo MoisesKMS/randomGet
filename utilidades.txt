@@ -27,3 +27,5 @@ function filtrarGeneros(lista) {
     console.log(lista);
     let nuevaLista = lista.filter(onlyUnique);
     console.log(nuevaLista
+
+//# sourceMappingURL=bundle.min.js.map
