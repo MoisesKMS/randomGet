@@ -23,23 +23,29 @@ function encontrarRecomendacion() {
     const contenedor = document.querySelector('#series-agregadas').children
     let listaId = []
     if (contenedor.length == 5) {
-        listaId = []
-        for (let i = 0; i < 5; i++) {
-            listaId.push(contenedor[i].id.substr(6, contenedor[i].id.length))
-        }
+
+        listaId.push(contenedor[0].id.replace(/\D/g, ''))
+        listaId.push(contenedor[1].id.replace(/\D/g, ''))
+        listaId.push(contenedor[2].id.replace(/\D/g, ''))
+        listaId.push(contenedor[3].id.replace(/\D/g, ''))
+        listaId.push(contenedor[4].id.replace(/\D/g, ''))
+
         encontrarGeneros(listaId)
+
+        setTimeout(() => {
+            limpiarHTML('cuerpo')
+            body.innerHTML = `
+            <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+            </div>
+            `;
+        }, 1500);
     } else {
-        listaId = []
-        console.log('Neceitas 5 series para poder darte una recomendacion');
+        alert('Neceitas 5 series para poder darte una recomendacion');
+
     }
-    limpiarHTML('cuerpo')
-    body.innerHTML = `
-    <div class="spinner">
-    <div class="bounce1"></div>
-    <div class="bounce2"></div>
-    <div class="bounce3"></div>
-    </div>
-    `;
 }
 
 
@@ -52,9 +58,15 @@ function encontrarGeneros(listaSeries) {
         .then(datos => {
             const listaObtenida = datos.data;
             listaObtenida.forEach(genero => {
-                let item = genero.attributes.slug
-                listaGeneros.push(item)
+                if (genero.attributes.slug != null & genero.attributes.slug != undefined) {
+                    let item = genero.attributes.slug
+                    listaGeneros.push(item)
+                }
+
             })
+        })
+        .catch(err => {
+            console.log(err);
         })
 
     fetch('https://kitsu.io/api/edge/anime/' + listaSeries[1] + '/genres')
@@ -62,9 +74,14 @@ function encontrarGeneros(listaSeries) {
         .then(datos => {
             const listaObtenida = datos.data;
             listaObtenida.forEach(genero => {
-                let item = genero.attributes.slug
-                listaGeneros.push(item)
+                if (genero.attributes.slug != null & genero.attributes.slug != undefined) {
+                    let item = genero.attributes.slug
+                    listaGeneros.push(item)
+                }
             })
+        })
+        .catch(err => {
+            console.log(err);
         })
 
 
@@ -73,9 +90,14 @@ function encontrarGeneros(listaSeries) {
         .then(datos => {
             const listaObtenida = datos.data;
             listaObtenida.forEach(genero => {
-                let item = genero.attributes.slug
-                listaGeneros.push(item)
+                if (genero.attributes.slug != null & genero.attributes.slug != undefined) {
+                    let item = genero.attributes.slug
+                    listaGeneros.push(item)
+                }
             })
+        })
+        .catch(err => {
+            console.log(err);
         })
 
 
@@ -84,9 +106,14 @@ function encontrarGeneros(listaSeries) {
         .then(datos => {
             const listaObtenida = datos.data;
             listaObtenida.forEach(genero => {
-                let item = genero.attributes.slug
-                listaGeneros.push(item)
+                if (genero.attributes.slug != null & genero.attributes.slug != undefined) {
+                    let item = genero.attributes.slug
+                    listaGeneros.push(item)
+                }
             })
+        })
+        .catch(err => {
+            console.log(err);
         })
 
 
@@ -96,12 +123,17 @@ function encontrarGeneros(listaSeries) {
             .then(datos => {
                 const listaObtenida = datos.data;
                 listaObtenida.forEach(genero => {
-                    let item = genero.attributes.slug
-                    listaGeneros.push(item)
+                    if (genero.attributes.slug != null & genero.attributes.slug != undefined) {
+                        let item = genero.attributes.slug
+                        listaGeneros.push(item)
+                    }
                 })
             })
             .then(() => {
                 filtrarGeneros(listaGeneros);
+            })
+            .catch(err => {
+                console.log(err);
             })
     }, 3000);
 }
@@ -158,39 +190,72 @@ function serieRecomendada(query, next) {
         .then(res => res.json())
         .then(datos => {
             // console.log(datos);
-            const listaSeries = datos.data
-            siguientePagina = datos.links.next
-            listaSeries.forEach(serie => {
-                if (serie.attributes.showType === 'TV') {
-                    if (Number(serie.attributes.startDate.substr(0, 4)) > 2008) {
-                        posiblesSeries++;
-                        recomendacion = serie.id
-                    }
+            if (datos.data.length > 0) {
+                const listaSeries = datos.data
+                if (datos.links.next != null & datos.links.next != undefined) {
+                    siguientePagina = datos.links.next
+                } else {
+                    siguientePagina = 'no'
                 }
-            })
+                // console.log('antes del forEach ' + Number(listaSeries[0].attributes.startDate.substr(0, 4)));
+                listaSeries.forEach(serie => {
+                    if (serie.attributes.showType != null & serie.attributes.showType != undefined & serie.attributes.showType === 'TV') {
+                        // console.log('en el forEach ' + Number(serie.attributes.startDate.substr(0, 4)));
+                        if (serie.attributes.startDate != null & serie.attributes.startDate != undefined) {
+                            if (Number(serie.attributes.startDate.substr(0, 4)) > 2008) {
+                                posiblesSeries++;
+                                recomendacion = serie.id
+                            }
+                        }
+
+                    }
+                })
+            }
+
+
         })
         .then(() => {
             if (posiblesSeries > 0) {
-                console.log(posiblesSeries);
-                mostrarSerieRecomendada(recomendacion)
+                if (posiblesSeries < 2) {
+                    console.log(posiblesSeries);
+                    recomendacion = Math.random() * (1500 - 500) + 500
+                    mostrarSerieRecomendada(recomendacion)
+                    console.log('La recomendacion tinene una fiabilidad baja')
+                } else {
+                    console.log(posiblesSeries);
+                    mostrarSerieRecomendada(recomendacion)
+                }
             } else {
-                serieRecomendada(siguientePagina, true)
+                if (siguientePagina === 'no') {
+                    console.log('no se encontro recomendacion');
+                } else {
+                    serieRecomendada(siguientePagina, true)
+                }
             }
+        })
+        .catch(err => {
+            console.log(err);
         })
 }
 
 function mostrarSerieRecomendada(id) {
-    const url = 'https://kitsu.io/api/edge/anime/' + id
+    let url = 'https://kitsu.io/api/edge/anime/' + id
     let mandar = ''
-    let personajesUrl = ''
+    let imagenFondo = '';
     fetch(url)
         .then(res => res.json())
         .then(datos => {
-            const anime = datos.data
-            console.log(anime);
-            console.log(anime.attributes.titles.en_jp);
+            let anime = datos.data
+                // console.log(anime);
+                // console.log(anime.attributes.titles.en_jp);
             mandar = anime.relationships.genres.links.related;
-            personajesUrl = anime.relationships.characters.links.related;
+
+            if (anime.attributes.coverImage != null & anime.attributes.coverImage != undefined) {
+                imagenFondo = anime.attributes.coverImage.original;
+            } else {
+                imagenFondo = './build/img/serie/cover/original.jpg';
+            }
+
             body.innerHTML = `
             <div class="bg-serie">
             <header class="site-header">
@@ -215,7 +280,7 @@ function mostrarSerieRecomendada(id) {
             <div class="hero">
                 <style>
                     .hero {
-                        background-image: url('${anime.attributes.coverImage.original}');
+                        background-image: url('${imagenFondo}');
                     }
                 </style>
                 <div class="hero-container"></div>
@@ -270,13 +335,12 @@ function mostrarSerieRecomendada(id) {
             `;
         })
         .then(() => {
-            mostrarGeneros(mandar, personajesUrl)
+            mostrarGeneros(mandar)
         })
         .catch(err => console.log(err));
 }
 
-function mostrarGeneros(url, personajesUrl) {
-    console.log(personajesUrl);
+function mostrarGeneros(url) {
     let listaGeneros = []
     fetch(url)
         .then(res => res.json())
@@ -302,57 +366,63 @@ function mostrarGeneros(url, personajesUrl) {
                 contenedorGeneros.appendChild(enlace)
             }
         })
-        .then(() => {
-            obtenerPersonajes(personajesUrl)
+        .catch(err => {
+            console.log(err);
         })
 }
 
-function obtenerPersonajes(url) {
-    let listaPersonajes = []
-    let contador = 0
-    fetch(url)
-        .then(res => res.json())
-        .then(datos => {
-            const personajes = datos.data;
-            personajes.forEach(personaje => {
-                if (contador < 4) {
-                    listaPersonajes.push(personaje.relationships.character.links.related)
-                    contador++;
-                }
-            })
-        })
-        .then(() => {
-            // obtenerImagenesPersonajes(listaPersonajes);
-        })
-}
+// function obtenerPersonajes(url) {
+//     let listaPersonajes = []
+//     let contador = 0
+//     fetch(url)
+//         .then(res => res.json())
+//         .then(datos => {
+//             const personajes = datos.data;
+//             personajes.forEach(personaje => {
+//                 if (contador < 4) {
+//                     listaPersonajes.push(personaje.relationships.character.links.related)
+//                     contador++;
+//                 }
+//             })
+//         })
+//         .then(() => {
+//             // obtenerImagenesPersonajes(listaPersonajes);
+//         })
+//         .catch(err => {
+//             console.log(err);
+//         })
+// }
 
-function obtenerImagenesPersonajes(listaPersonajes) {
-    let urlImagen = []
-    let nombrePersonaje = []
-    let contador = 0;
-    listaPersonajes.forEach(personaje => {
-        fetch(personaje)
-            .then(res => res.json())
-            .then(datos => {
-                urlImagen.push(datos.data.attributes.image.original)
-                nombrePersonaje.push(datos.data.attributes.canonicalName)
-            })
-            .then(() => {
-                const contenedorPersonajes = document.querySelector('#contenedor-personajes')
-                const divPersonaje = document.createElement('DIV')
-                `
-                <div class="miniatura">
-                <img src="build/img/serie/cover/1.jpg" alt="Personaje">
-                </div>
-            `
-                divPersonaje.classList.add('miniatura')
-                const imagen = document.createElement('IMG')
-                img.src = urlImagen[contador];
-                img.setAttribute('alt', nombrePersonaje[contador])
+// function obtenerImagenesPersonajes(listaPersonajes) {
+//     let urlImagen = []
+//     let nombrePersonaje = []
+//     let contador = 0;
+//     listaPersonajes.forEach(personaje => {
+//         fetch(personaje)
+//             .then(res => res.json())
+//             .then(datos => {
+//                 urlImagen.push(datos.data.attributes.image.original)
+//                 nombrePersonaje.push(datos.data.attributes.canonicalName)
+//             })
+//             .then(() => {
+//                 const contenedorPersonajes = document.querySelector('#contenedor-personajes')
+//                 const divPersonaje = document.createElement('DIV')
+//                 `
+//                 <div class="miniatura">
+//                 <img src="build/img/serie/cover/1.jpg" alt="Personaje">
+//                 </div>
+//             `
+//                 divPersonaje.classList.add('miniatura')
+//                 const imagen = document.createElement('IMG')
+//                 img.src = urlImagen[contador];
+//                 img.setAttribute('alt', nombrePersonaje[contador])
 
-                divPersonaje.appendChild(imagen)
+//                 divPersonaje.appendChild(imagen)
 
-                contador++;
-            })
-    })
-}
+//                 contador++;
+//             })
+//             .catch(err => {
+//                 console.log(err);
+//             })
+//     })
+// }
